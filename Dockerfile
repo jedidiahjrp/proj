@@ -6,6 +6,6 @@ RUN mvn -B -DskipTests package
 FROM eclipse-temurin:11-jre-jammy
 WORKDIR /app
 COPY --from=builder /app/target/ecommerce-0.0.1-SNAPSHOT.jar ./app.jar
-EXPOSE 8080
+EXPOSE 9002
 ENTRYPOINT [\
 java\, \-jar\, \/app/app.jar\]
