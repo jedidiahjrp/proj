@@ -1,9 +1,10 @@
-FROM maven:3.8.8-openjdk-11-slim AS builder
+FROM maven:3.8.8-jdk-11 AS builder
 WORKDIR /app
 COPY pom.xml ./
 COPY src ./src
 RUN mvn -B -DskipTests package
-FROM eclipse-temurin:11-jre-jammy
+
+FROM eclipse-temurin:11-jre
 WORKDIR /app
 COPY --from=builder /app/target/ecommerce-0.0.1-SNAPSHOT.jar ./app.jar
 EXPOSE 9002
